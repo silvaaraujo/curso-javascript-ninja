@@ -3,6 +3,8 @@
 	'use strict';
 
   function DOM(elementos) {
+    if (!(this instanceof DOM)) return new DOM(elementos);
+
     this.elements = this.getDOMElements(elementos);
   }
 
@@ -22,8 +24,9 @@
     });
   }
 
-  DOM.prototype.get = function get() {
-    return this.elements;
+  DOM.prototype.get = function get(index) {
+    if (!index) return this.elements[0]
+    return this.elements[index];
   }
 
   //- forEach, map, filter, reduce, reduceRight, every e some.
